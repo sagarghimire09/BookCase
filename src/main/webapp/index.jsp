@@ -25,15 +25,10 @@
     <div>
         <h2>List Books</h2>
         <div id="bookDiv">
-            <table id="bookTable">
+            <table id="bookTable" border="1px solid black">
                 <tr>
                     <th>Title</th>
                     <th>ISBN</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>test</td>
-                    <td>2343ads</td>
                 </tr>
             </table>
         </div>
@@ -49,11 +44,17 @@
                         $('#addForm').trigger("reset");
                     },
                     success: function (book) {
-                        $('#bookTable').append("<tr><td>"+book.title+"</td><td>"+book.isbn+"</td></tr>");
-                        // $.each(books, function (k,v) {
-                        //     console.log(v.isbn);
-                        //     $('#bookTable').append("<tr><td>"+v.k+"</td><td>"+v.title+"</td><td>"+v.isbn+"</td></tr>");
-                        // });
+                        // 1. append single data
+                        // $('#bookTable').append("<tr><td>"+book.title+"</td><td>"+book.isbn+"</td></tr>");
+                        // end append single data
+
+                        // 2. fetch whole table
+                        var ht = "<tr><th>Title</th><th>ISBN</th></tr>";
+                        $.each(book, function (k,v) {
+                            ht += "<tr><td>"+v.title+"</td><td>"+v.isbn+"</td></tr>";
+                        });
+                        $('#bookTable').html(ht);
+                        //end fetch whole table
                     }
                 });
 

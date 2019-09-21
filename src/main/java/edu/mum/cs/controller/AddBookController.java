@@ -27,8 +27,13 @@ public class AddBookController extends HttpServlet {
         book.setTitle(title);
         book.setIsbn(isbn);
         bookList.add(book);
-//        resp.getWriter().print(new Gson().toJson(bookList));
-        resp.getWriter().print(new Gson().toJson(book));
-        System.out.println(bookList.size());
+
+//    1.  send all the data
+        resp.getWriter().print(new Gson().toJson(bookList));
+//        end send all data
+
+//    2.  send single data
+//        resp.getWriter().print(new Gson().toJson(book));
+//        end send single data
     }
 }
